@@ -34,6 +34,8 @@ def print_diff(diff):
         yield "      " + action
 
 def response_to_md(response):
+  for warning in response["warnings"]:
+    print("Warning: ", warning, file=sys.stderr)
   granted = collect_diff_items(response["granted"])
   revoked = collect_diff_items(response["revoked"])
   lines = []
